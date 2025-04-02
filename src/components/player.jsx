@@ -1,0 +1,145 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import {
+  Play,
+  Pause,
+  SkipBack,
+  SkipForward,
+  Repeat,
+  Shuffle,
+  Volume2,
+  Maximize2,
+  ListMusic,
+  Heart,
+  Laptop,
+} from "lucide-react"
+import { Button } from "./ui/button"
+import { Slider } from "./ui/slider"
+
+export function Player() {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [volume, setVolume] = useState(70)
+  const [isLiked, setIsLiked] = useState(false)
+
+  // Mock song data
+  const currentSong = {
+    title: "Blinding Lights",
+    artist: "The Weeknd",
+    album: "After Hours",
+    duration: 200, // in seconds
+    imageUrl: "/placeholder.svg?height=56&width=56",
+  }
+
+  // Simulate progress when playing
+  useEffect(() => {
+    let interval
+
+    if (isPlaying && currentTime < currentSong.duration) {
+      interval = setInterval(() => {
+        setCurrentTime((prev) => {
+          if (prev >= currentSong.duration) {
+            clearInterval(interval)
+            setIsPlaying(false)
+            return 0
+          }
+          return prev + 1
+        })
+      }, 1000)
+    }
+
+    return () => clearInterval(interval)
+  }, [isPlaying, currentTime, currentSong.duration])
+
+  // Format time as mm:ss
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = Math.floor(seconds % 60)
+    return `${mins}:${secs.toString().padStart(2, "0")}`
+  }
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 px-4 py-3">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4 w-[30%]">
+          <img src={currentSong.imageUrl || "/placeholder.svg"} alt={currentSong.title} className="w-14 h-14 rounded" />
+          <div>
+            <p className="font-medium">{currentSong.title}</p>
+            <p className="text-xs text-zinc-400">{currentSong.artist}</p>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={`h-8 w-8 ${isLiked ? "text-green-500" : "text-zinc-400"}`}
+            onClick={() => setIsLiked(!isLiked)}
+          >
+            <Heart className="h-4 w-4" fill={isLiked ? "currentColor" : "none"} />
+          </Button>
+        </div>
+
+        <div className="flex flex-col items-center w-[40%]">
+          <div className="flex items-center gap-4 mb-2">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+              <Shuffle className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+              <SkipBack className="h-4 w-4" />
+            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="icon"
+                className="rounded-full bg-white text-black h-8 w-8"
+                onClick={() => setIsPlaying(!isPlaying)}
+              >
+                {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+              </Button>
+            </motion.div>
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+              <SkipForward className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+              <Repeat className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <div className="flex items-center gap-2 w-full">
+            <span className="text-xs text-zinc-400 w-10 text-right">{formatTime(currentTime)}</span>
+            <Slider
+              value={[currentTime]}
+              max={currentSong.duration}
+              step={1}
+              onValueChange={(value) => setCurrentTime(value[0])}
+              className="w-full"
+            />
+            <span className="text-xs text-zinc-400 w-10">{formatTime(currentSong.duration)}</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 w-[30%] justify-end">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <ListMusic className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <Laptop className="h-4 w-4" />
+          </Button>
+          <div className="flex items-center gap-2 w-32">
+            <Volume2 className="h-4 w-4 text-zinc-400" />
+            <Slider
+              value={[volume]}
+              max={100}
+              step={1}
+              onValueChange={(value) => setVolume(value[0])}
+              className="w-full"
+            />
+          </div>
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <Maximize2 className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
