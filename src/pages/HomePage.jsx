@@ -187,12 +187,12 @@ export default function HomePage() {
               key={item.id}
               variants={item}
               whileHover={{ scale: 1.03 }}
-              className="bg-zinc-800/40 rounded-md overflow-hidden flex items-center"
+              className="rounded-md overflow-hidden flex items-center h-20 shadow-md"
             >
               <img src={item.imageUrl || "/placeholder.svg"} alt={item.title} className="h-12 w-12 object-cover" />
               <div className="flex-1 truncate px-3">{item.title}</div>
               <div className="opacity-0 group-hover:opacity-100 p-2">
-                <Button size="icon" variant="ghost" className="rounded-full bg-green-500 text-black h-8 w-8">
+                <Button size="icon" variant="ghost" className="rounded-full bg-red-500 text-black h-8 w-8">
                   <Play className="h-4 w-4" />
                 </Button>
               </div>
@@ -203,7 +203,7 @@ export default function HomePage() {
         <section className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold">Featured Playlists</h2>
-            <Button variant="link" className="text-zinc-400 hover:text-white">
+            <Button variant="link" className="text-blue-400 hover:text-blue-800">
               Show all
             </Button>
           </div>
@@ -219,7 +219,7 @@ export default function HomePage() {
                 key={playlist.id}
                 variants={item}
                 whileHover={{ y: -8 }}
-                className="bg-purple-800/40 p-4 rounded-md group"
+                className=" p-4 rounded-md group"
               >
                 <div className="relative mb-4">
                   <img
@@ -228,13 +228,13 @@ export default function HomePage() {
                     className="w-full aspect-square object-cover rounded-md shadow-lg"
                   />
                   <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="icon" className="rounded-full bg-purple-500 text-black h-10 w-10 shadow-lg">
+                    <Button size="icon" className="rounded-full bg-red-500 text-black h-10 w-10 shadow-lg">
                       <Play className="h-5 w-5" />
                     </Button>
                   </div>
                 </div>
                 <h3 className="font-semibold truncate">{playlist.title}</h3>
-                <p className="text-sm text-purple-400 line-clamp-2">{playlist.description}</p>
+                <p className="text-sm text-zinc-700 line-clamp-2">{playlist.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -243,7 +243,7 @@ export default function HomePage() {
         <section className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold">Made For You</h2>
-            <Button variant="link" className="text-purple-400 hover:text-white">
+            <Button variant="link" className="text-zinc-700 hover:text-white">
               Show all
             </Button>
           </div>
@@ -259,7 +259,7 @@ export default function HomePage() {
                 key={playlist.id}
                 variants={item}
                 whileHover={{ y: -8 }}
-                className="bg-purple-800/40 p-4 rounded-md group"
+                className=" p-4 rounded-md group"
               >
                 <div className="relative mb-4">
                   <img
@@ -268,13 +268,13 @@ export default function HomePage() {
                     className="w-full aspect-square object-cover rounded-md shadow-lg"
                   />
                   <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="icon" className="rounded-full bg-purple-500 text-black h-10 w-10 shadow-lg">
+                    <Button size="icon" className="rounded-full bg-red-500 text-white h-10 w-10 shadow-lg">
                       <Play className="h-5 w-5" />
                     </Button>
                   </div>
                 </div>
                 <h3 className="font-semibold truncate">{playlist.title}</h3>
-                <p className="text-sm text-zinc-400 line-clamp-2">{playlist.description}</p>
+                <p className="text-sm text-zinc-700 line-clamp-2">{playlist.description}</p>
               </motion.div>
             ))}
           </motion.div>

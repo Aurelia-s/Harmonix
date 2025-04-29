@@ -32,7 +32,7 @@ export default function PremiumPlansPage() {
       <div className="max-w-6xl mx-auto p-6">
         <div className="flex items-center gap-4 mb-8">
           <Link to="/">
-            <Button variant="ghost" size="icon" className="rounded-full bg-black/40 hover:bg-black/60">
+            <Button variant="ghost" size="icon" className="rounded-full bg-background/40 hover:bg-background/60">
               <ChevronLeft className="h-5 w-5" />
             </Button>
           </Link>
@@ -49,20 +49,20 @@ export default function PremiumPlansPage() {
             className="text-3xl md:text-4xl font-bold mb-4"
             animate={{
               scale: [1, 1.02, 1],
-              color: ["#ffffff", "#1ed760", "#ffffff"],
+              color: ["#ffffff", "#f472b6", "#ffffff"],
             }}
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatDelay: 2 }}
           >
             Get Premium for the whole family
           </motion.h2>
-          <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Listen without limits on your phone, speaker, and other devices. Pay your way with various payment options.
           </p>
         </motion.div>
 
         <Tabs defaultValue="monthly" className="mb-12">
           <div className="flex justify-center mb-8">
-            <TabsList className="bg-zinc-800">
+            <TabsList className="bg-secondary/20">
               <TabsTrigger value="monthly">Monthly</TabsTrigger>
               <TabsTrigger value="yearly">Yearly (Save 20%)</TabsTrigger>
             </TabsList>
@@ -77,13 +77,13 @@ export default function PremiumPlansPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card
-                  className={`bg-zinc-900 border-zinc-800 transition-all duration-300 ${
-                    hoveredCard === "individual" ? "border-green-500 shadow-lg shadow-green-500/20" : ""
+                  className={`bg-card border-border transition-all duration-300 ${
+                    hoveredCard === "individual" ? "border-primary shadow-lg shadow-primary/20" : ""
                   }`}
                 >
                   <CardHeader className="pb-4">
                     <motion.div
-                      className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                      className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-4"
                       animate={
                         hoveredCard === "individual"
                           ? {
@@ -94,7 +94,7 @@ export default function PremiumPlansPage() {
                       }
                       transition={{ duration: 0.5 }}
                     >
-                      <Music className="h-6 w-6 text-black" />
+                      <Music className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
                     <CardTitle className="text-xl">Premium Individual</CardTitle>
                     <CardDescription>For individual music lovers</CardDescription>
@@ -102,7 +102,7 @@ export default function PremiumPlansPage() {
                   <CardContent className="pb-4">
                     <div className="mb-4">
                       <span className="text-3xl font-bold">$9.99</span>
-                      <span className="text-zinc-400">/month</span>
+                      <span className="text-muted-foreground">/month</span>
                     </div>
                     <ul className="space-y-2">
                       <motion.li
@@ -110,7 +110,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "individual" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.1 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Ad-free music listening</span>
                       </motion.li>
                       <motion.li
@@ -118,7 +118,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "individual" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Play anywhere - even offline</span>
                       </motion.li>
                       <motion.li
@@ -126,7 +126,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "individual" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>On-demand playback</span>
                       </motion.li>
                     </ul>
@@ -134,7 +134,7 @@ export default function PremiumPlansPage() {
                   <CardFooter>
                     <motion.div className="w-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link to="/payment-gateway?plan=premium-individual" className="w-full">
-                        <Button className="w-full bg-green-500 hover:bg-green-600">Get Started</Button>
+                        <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
                       </Link>
                     </motion.div>
                   </CardFooter>
@@ -148,17 +148,17 @@ export default function PremiumPlansPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card
-                  className={`bg-zinc-900 border-zinc-800 relative transition-all duration-300 ${
-                    hoveredCard === "duo" ? "border-green-500 shadow-lg shadow-green-500/20" : ""
+                  className={`bg-card border-border relative transition-all duration-300 ${
+                    hoveredCard === "duo" ? "border-primary shadow-lg shadow-primary/20" : ""
                   }`}
                 >
                   <motion.div
-                    className="absolute top-0 left-0 right-0 bg-green-500 text-black font-medium py-1 text-center text-sm"
+                    className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground font-medium py-1 text-center text-sm"
                     animate={
                       hoveredCard === "duo"
                         ? {
                             scale: [1, 1.05, 1],
-                            backgroundColor: ["#1ed760", "#0db146", "#1ed760"],
+                            backgroundColor: ["hsl(328, 85%, 70%)", "hsl(328, 85%, 60%)", "hsl(328, 85%, 70%)"],
                           }
                         : {}
                     }
@@ -168,7 +168,7 @@ export default function PremiumPlansPage() {
                   </motion.div>
                   <CardHeader className="pb-4 pt-8">
                     <motion.div
-                      className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                      className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-4"
                       animate={
                         hoveredCard === "duo"
                           ? {
@@ -179,7 +179,7 @@ export default function PremiumPlansPage() {
                       }
                       transition={{ duration: 0.5 }}
                     >
-                      <Users className="h-6 w-6 text-black" />
+                      <Users className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
                     <CardTitle className="text-xl">Premium Duo</CardTitle>
                     <CardDescription>For couples who live together</CardDescription>
@@ -187,7 +187,7 @@ export default function PremiumPlansPage() {
                   <CardContent className="pb-4">
                     <div className="mb-4">
                       <span className="text-3xl font-bold">$12.99</span>
-                      <span className="text-zinc-400">/month</span>
+                      <span className="text-muted-foreground">/month</span>
                     </div>
                     <ul className="space-y-2">
                       <motion.li
@@ -195,7 +195,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.1 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>2 Premium accounts</span>
                       </motion.li>
                       <motion.li
@@ -203,7 +203,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Ad-free music listening</span>
                       </motion.li>
                       <motion.li
@@ -211,7 +211,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Play anywhere - even offline</span>
                       </motion.li>
                       <motion.li
@@ -219,7 +219,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.4 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>On-demand playback</span>
                       </motion.li>
                     </ul>
@@ -227,7 +227,7 @@ export default function PremiumPlansPage() {
                   <CardFooter>
                     <motion.div className="w-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link to="/payment-gateway?plan=premium-duo" className="w-full">
-                        <Button className="w-full bg-green-500 hover:bg-green-600">Get Started</Button>
+                        <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
                       </Link>
                     </motion.div>
                   </CardFooter>
@@ -241,13 +241,13 @@ export default function PremiumPlansPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card
-                  className={`bg-zinc-900 border-zinc-800 transition-all duration-300 ${
-                    hoveredCard === "family" ? "border-green-500 shadow-lg shadow-green-500/20" : ""
+                  className={`bg-card border-border transition-all duration-300 ${
+                    hoveredCard === "family" ? "border-primary shadow-lg shadow-primary/20" : ""
                   }`}
                 >
                   <CardHeader className="pb-4">
                     <motion.div
-                      className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                      className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-4"
                       animate={
                         hoveredCard === "family"
                           ? {
@@ -258,7 +258,7 @@ export default function PremiumPlansPage() {
                       }
                       transition={{ duration: 0.5 }}
                     >
-                      <Shield className="h-6 w-6 text-black" />
+                      <Shield className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
                     <CardTitle className="text-xl">Premium Family</CardTitle>
                     <CardDescription>For family members who live together</CardDescription>
@@ -266,7 +266,7 @@ export default function PremiumPlansPage() {
                   <CardContent className="pb-4">
                     <div className="mb-4">
                       <span className="text-3xl font-bold">$15.99</span>
-                      <span className="text-zinc-400">/month</span>
+                      <span className="text-muted-foreground">/month</span>
                     </div>
                     <ul className="space-y-2">
                       <motion.li
@@ -274,7 +274,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.1 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>6 Premium accounts</span>
                       </motion.li>
                       <motion.li
@@ -282,7 +282,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Block explicit music</span>
                       </motion.li>
                       <motion.li
@@ -290,7 +290,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Ad-free music listening</span>
                       </motion.li>
                       <motion.li
@@ -298,7 +298,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.4 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Play anywhere - even offline</span>
                       </motion.li>
                       <motion.li
@@ -306,7 +306,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.5 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>On-demand playback</span>
                       </motion.li>
                     </ul>
@@ -314,7 +314,7 @@ export default function PremiumPlansPage() {
                   <CardFooter>
                     <motion.div className="w-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link to="/payment-gateway?plan=premium-family" className="w-full">
-                        <Button className="w-full bg-green-500 hover:bg-green-600">Get Started</Button>
+                        <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
                       </Link>
                     </motion.div>
                   </CardFooter>
@@ -332,13 +332,13 @@ export default function PremiumPlansPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card
-                  className={`bg-zinc-900 border-zinc-800 transition-all duration-300 ${
-                    hoveredCard === "individual-yearly" ? "border-green-500 shadow-lg shadow-green-500/20" : ""
+                  className={`bg-card border-border transition-all duration-300 ${
+                    hoveredCard === "individual-yearly" ? "border-primary shadow-lg shadow-primary/20" : ""
                   }`}
                 >
                   <CardHeader className="pb-4">
                     <motion.div
-                      className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                      className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-4"
                       animate={
                         hoveredCard === "individual-yearly"
                           ? {
@@ -349,7 +349,7 @@ export default function PremiumPlansPage() {
                       }
                       transition={{ duration: 0.5 }}
                     >
-                      <Music className="h-6 w-6 text-black" />
+                      <Music className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
                     <CardTitle className="text-xl">Premium Individual</CardTitle>
                     <CardDescription>For individual music lovers</CardDescription>
@@ -357,14 +357,14 @@ export default function PremiumPlansPage() {
                   <CardContent className="pb-4">
                     <div className="mb-4">
                       <span className="text-3xl font-bold">$95.88</span>
-                      <span className="text-zinc-400">/year</span>
+                      <span className="text-muted-foreground">/year</span>
                       <motion.div
-                        className="text-green-500 text-sm font-medium"
+                        className="text-primary text-sm font-medium"
                         animate={
                           hoveredCard === "individual-yearly"
                             ? {
                                 scale: [1, 1.1, 1],
-                                color: ["#1ed760", "#0db146", "#1ed760"],
+                                color: ["hsl(328, 85%, 70%)", "hsl(328, 85%, 60%)", "hsl(328, 85%, 70%)"],
                               }
                             : {}
                         }
@@ -379,7 +379,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "individual-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.1 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Ad-free music listening</span>
                       </motion.li>
                       <motion.li
@@ -387,7 +387,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "individual-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Play anywhere - even offline</span>
                       </motion.li>
                       <motion.li
@@ -395,7 +395,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "individual-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>On-demand playback</span>
                       </motion.li>
                     </ul>
@@ -403,7 +403,7 @@ export default function PremiumPlansPage() {
                   <CardFooter>
                     <motion.div className="w-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link to="/payment-gateway?plan=premium-individual-yearly" className="w-full">
-                        <Button className="w-full bg-green-500 hover:bg-green-600">Get Started</Button>
+                        <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
                       </Link>
                     </motion.div>
                   </CardFooter>
@@ -417,17 +417,17 @@ export default function PremiumPlansPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card
-                  className={`bg-zinc-900 border-zinc-800 relative transition-all duration-300 ${
-                    hoveredCard === "duo-yearly" ? "border-green-500 shadow-lg shadow-green-500/20" : ""
+                  className={`bg-card border-border relative transition-all duration-300 ${
+                    hoveredCard === "duo-yearly" ? "border-primary shadow-lg shadow-primary/20" : ""
                   }`}
                 >
                   <motion.div
-                    className="absolute top-0 left-0 right-0 bg-green-500 text-black font-medium py-1 text-center text-sm"
+                    className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground font-medium py-1 text-center text-sm"
                     animate={
                       hoveredCard === "duo-yearly"
                         ? {
                             scale: [1, 1.05, 1],
-                            backgroundColor: ["#1ed760", "#0db146", "#1ed760"],
+                            backgroundColor: ["hsl(328, 85%, 70%)", "hsl(328, 85%, 60%)", "hsl(328, 85%, 70%)"],
                           }
                         : {}
                     }
@@ -440,7 +440,7 @@ export default function PremiumPlansPage() {
                   </motion.div>
                   <CardHeader className="pb-4 pt-8">
                     <motion.div
-                      className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                      className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-4"
                       animate={
                         hoveredCard === "duo-yearly"
                           ? {
@@ -451,7 +451,7 @@ export default function PremiumPlansPage() {
                       }
                       transition={{ duration: 0.5 }}
                     >
-                      <Users className="h-6 w-6 text-black" />
+                      <Users className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
                     <CardTitle className="text-xl">Premium Duo</CardTitle>
                     <CardDescription>For couples who live together</CardDescription>
@@ -459,14 +459,14 @@ export default function PremiumPlansPage() {
                   <CardContent className="pb-4">
                     <div className="mb-4">
                       <span className="text-3xl font-bold">$124.99</span>
-                      <span className="text-zinc-400">/year</span>
+                      <span className="text-muted-foreground">/year</span>
                       <motion.div
-                        className="text-green-500 text-sm font-medium"
+                        className="text-primary text-sm font-medium"
                         animate={
                           hoveredCard === "duo-yearly"
                             ? {
                                 scale: [1, 1.1, 1],
-                                color: ["#1ed760", "#0db146", "#1ed760"],
+                                color: ["hsl(328, 85%, 70%)", "hsl(328, 85%, 60%)", "hsl(328, 85%, 70%)"],
                               }
                             : {}
                         }
@@ -481,7 +481,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.1 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>2 Premium accounts</span>
                       </motion.li>
                       <motion.li
@@ -489,7 +489,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Ad-free music listening</span>
                       </motion.li>
                       <motion.li
@@ -497,7 +497,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Play anywhere - even offline</span>
                       </motion.li>
                       <motion.li
@@ -505,7 +505,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "duo-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.4 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>On-demand playback</span>
                       </motion.li>
                     </ul>
@@ -513,7 +513,7 @@ export default function PremiumPlansPage() {
                   <CardFooter>
                     <motion.div className="w-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link to="/payment-gateway?plan=premium-duo-yearly" className="w-full">
-                        <Button className="w-full bg-green-500 hover:bg-green-600">Get Started</Button>
+                        <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
                       </Link>
                     </motion.div>
                   </CardFooter>
@@ -527,13 +527,13 @@ export default function PremiumPlansPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card
-                  className={`bg-zinc-900 border-zinc-800 transition-all duration-300 ${
-                    hoveredCard === "family-yearly" ? "border-green-500 shadow-lg shadow-green-500/20" : ""
+                  className={`bg-card border-border transition-all duration-300 ${
+                    hoveredCard === "family-yearly" ? "border-primary shadow-lg shadow-primary/20" : ""
                   }`}
                 >
                   <CardHeader className="pb-4">
                     <motion.div
-                      className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mb-4"
+                      className="bg-primary w-12 h-12 rounded-full flex items-center justify-center mb-4"
                       animate={
                         hoveredCard === "family-yearly"
                           ? {
@@ -544,7 +544,7 @@ export default function PremiumPlansPage() {
                       }
                       transition={{ duration: 0.5 }}
                     >
-                      <Shield className="h-6 w-6 text-black" />
+                      <Shield className="h-6 w-6 text-primary-foreground" />
                     </motion.div>
                     <CardTitle className="text-xl">Premium Family</CardTitle>
                     <CardDescription>For family members who live together</CardDescription>
@@ -552,14 +552,14 @@ export default function PremiumPlansPage() {
                   <CardContent className="pb-4">
                     <div className="mb-4">
                       <span className="text-3xl font-bold">$153.99</span>
-                      <span className="text-zinc-400">/year</span>
+                      <span className="text-muted-foreground">/year</span>
                       <motion.div
-                        className="text-green-500 text-sm font-medium"
+                        className="text-primary text-sm font-medium"
                         animate={
                           hoveredCard === "family-yearly"
                             ? {
                                 scale: [1, 1.1, 1],
-                                color: ["#1ed760", "#0db146", "#1ed760"],
+                                color: ["hsl(328, 85%, 70%)", "hsl(328, 85%, 60%)", "hsl(328, 85%, 70%)"],
                               }
                             : {}
                         }
@@ -574,7 +574,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.1 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>6 Premium accounts</span>
                       </motion.li>
                       <motion.li
@@ -582,7 +582,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.2 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Block explicit music</span>
                       </motion.li>
                       <motion.li
@@ -590,7 +590,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.3 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Ad-free music listening</span>
                       </motion.li>
                       <motion.li
@@ -598,7 +598,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.4 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>Play anywhere - even offline</span>
                       </motion.li>
                       <motion.li
@@ -606,7 +606,7 @@ export default function PremiumPlansPage() {
                         animate={hoveredCard === "family-yearly" ? { x: [0, 5, 0] } : {}}
                         transition={{ duration: 0.3, delay: 0.5 }}
                       >
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>On-demand playback</span>
                       </motion.li>
                     </ul>
@@ -614,7 +614,7 @@ export default function PremiumPlansPage() {
                   <CardFooter>
                     <motion.div className="w-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link to="/payment-gateway?plan=premium-family-yearly" className="w-full">
-                        <Button className="w-full bg-green-500 hover:bg-green-600">Get Started</Button>
+                        <Button className="w-full bg-primary hover:bg-primary/90">Get Started</Button>
                       </Link>
                     </motion.div>
                   </CardFooter>
@@ -625,81 +625,81 @@ export default function PremiumPlansPage() {
         </Tabs>
 
         <motion.div
-          className="bg-zinc-900/60 rounded-lg p-6 mb-8"
+          className="bg-card/60 rounded-lg p-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          whileHover={{ boxShadow: "0 0 15px rgba(30, 215, 96, 0.2)" }}
+          whileHover={{ boxShadow: "0 0 15px rgba(244, 114, 182, 0.2)" }}
         >
           <h2 className="text-xl font-bold mb-4">Why go Premium?</h2>
           <div className="grid md:grid-cols-4 gap-6">
             <motion.div className="space-y-2" whileHover={{ scale: 1.05 }}>
               <motion.div
-                className="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center"
+                className="bg-primary w-10 h-10 rounded-full flex items-center justify-center"
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
               >
-                <Music className="h-5 w-5 text-black" />
+                <Music className="h-5 w-5 text-primary-foreground" />
               </motion.div>
               <h3 className="font-medium">Download music</h3>
-              <p className="text-sm text-zinc-400">Listen anywhere, even without internet.</p>
+              <p className="text-sm text-muted-foreground">Listen anywhere, even without internet.</p>
             </motion.div>
 
             <motion.div className="space-y-2" whileHover={{ scale: 1.05 }}>
               <motion.div
-                className="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center"
+                className="bg-primary w-10 h-10 rounded-full flex items-center justify-center"
                 animate={{
                   scale: [1, 1.2, 1],
                   rotate: [0, 10, 0, -10, 0],
                 }}
                 transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
               >
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-black">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-primary-foreground">
                   <path d="M19.5 12c0 3.59-2.91 6.5-6.5 6.5S6.5 15.59 6.5 12 9.41 5.5 13 5.5s6.5 2.91 6.5 6.5zm-13 0c0 3.59 2.91 6.5 6.5 6.5s6.5-2.91 6.5-6.5-2.91-6.5-6.5-6.5-6.5 2.91-6.5 6.5z" />
                   <path d="M12 3.5c-4.694 0-8.5 3.806-8.5 8.5s3.806 8.5 8.5 8.5 8.5-3.806 8.5-8.5-3.806-8.5-8.5-8.5zm0 16.5c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
                   <path d="M13 10.8l3.5 2.2-3.5 2.2V10.8z" />
                 </svg>
               </motion.div>
               <h3 className="font-medium">Ad-free music listening</h3>
-              <p className="text-sm text-zinc-400">Enjoy uninterrupted music.</p>
+              <p className="text-sm text-muted-foreground">Enjoy uninterrupted music.</p>
             </motion.div>
 
             <motion.div className="space-y-2" whileHover={{ scale: 1.05 }}>
               <motion.div
-                className="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center"
+                className="bg-primary w-10 h-10 rounded-full flex items-center justify-center"
                 animate={{
                   y: [0, -5, 0],
-                  backgroundColor: ["#1ed760", "#0db146", "#1ed760"],
+                  backgroundColor: ["hsl(328, 85%, 70%)", "hsl(328, 85%, 60%)", "hsl(328, 85%, 70%)"],
                 }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
               >
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-black">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-primary-foreground">
                   <path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z" />
                 </svg>
               </motion.div>
               <h3 className="font-medium">Play any song</h3>
-              <p className="text-sm text-zinc-400">Even on mobile, play any song, any time.</p>
+              <p className="text-sm text-muted-foreground">Even on mobile, play any song, any time.</p>
             </motion.div>
 
             <motion.div className="space-y-2" whileHover={{ scale: 1.05 }}>
               <motion.div
-                className="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center"
+                className="bg-primary w-10 h-10 rounded-full flex items-center justify-center"
                 animate={{
                   rotate: [0, 15, 0, -15, 0],
                 }}
                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
               >
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-black">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-primary-foreground">
                   <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
                 </svg>
               </motion.div>
               <h3 className="font-medium">Unlimited skips</h3>
-              <p className="text-sm text-zinc-400">Just hit next to skip any song.</p>
+              <p className="text-sm text-muted-foreground">Just hit next to skip any song.</p>
             </motion.div>
           </div>
         </motion.div>
 
-        <div className="text-center text-sm text-zinc-400">
+        <div className="text-center text-sm text-muted-foreground">
           <p>Terms and conditions apply. 1 month free not available for users who have already tried Premium.</p>
         </div>
       </div>

@@ -61,18 +61,18 @@ export function Player() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 px-4 py-3">
+    <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border px-4 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 w-[30%]">
           <img src={currentSong.imageUrl || "/placeholder.svg"} alt={currentSong.title} className="w-14 h-14 rounded" />
           <div>
             <p className="font-medium">{currentSong.title}</p>
-            <p className="text-xs text-zinc-400">{currentSong.artist}</p>
+            <p className="text-xs text-muted-foreground">{currentSong.artist}</p>
           </div>
           <Button
             variant="ghost"
             size="icon"
-            className={`h-8 w-8 ${isLiked ? "text-green-500" : "text-zinc-400"}`}
+            className={`h-8 w-8 ${isLiked ? "text-primary" : "text-muted-foreground"}`}
             onClick={() => setIsLiked(!isLiked)}
           >
             <Heart className="h-4 w-4" fill={isLiked ? "currentColor" : "none"} />
@@ -81,31 +81,31 @@ export function Player() {
 
         <div className="flex flex-col items-center w-[40%]">
           <div className="flex items-center gap-4 mb-2">
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
               <Shuffle className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
               <SkipBack className="h-4 w-4" />
             </Button>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="icon"
-                className="rounded-full bg-white text-black h-8 w-8"
+                className="rounded-full bg-primary text-primary-foreground h-8 w-8"
                 onClick={() => setIsPlaying(!isPlaying)}
               >
                 {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
               </Button>
             </motion.div>
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
               <SkipForward className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
               <Repeat className="h-4 w-4" />
             </Button>
           </div>
 
           <div className="flex items-center gap-2 w-full">
-            <span className="text-xs text-zinc-400 w-10 text-right">{formatTime(currentTime)}</span>
+            <span className="text-xs text-muted-foreground w-10 text-right">{formatTime(currentTime)}</span>
             <Slider
               value={[currentTime]}
               max={currentSong.duration}
@@ -113,19 +113,19 @@ export function Player() {
               onValueChange={(value) => setCurrentTime(value[0])}
               className="w-full"
             />
-            <span className="text-xs text-zinc-400 w-10">{formatTime(currentSong.duration)}</span>
+            <span className="text-xs text-muted-foreground w-10">{formatTime(currentSong.duration)}</span>
           </div>
         </div>
 
         <div className="flex items-center gap-3 w-[30%] justify-end">
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
             <ListMusic className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
             <Laptop className="h-4 w-4" />
           </Button>
           <div className="flex items-center gap-2 w-32">
-            <Volume2 className="h-4 w-4 text-zinc-400" />
+            <Volume2 className="h-4 w-4 text-muted-foreground" />
             <Slider
               value={[volume]}
               max={100}
@@ -134,7 +134,7 @@ export function Player() {
               className="w-full"
             />
           </div>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
             <Maximize2 className="h-4 w-4" />
           </Button>
         </div>

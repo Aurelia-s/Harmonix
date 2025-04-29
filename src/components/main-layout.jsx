@@ -3,9 +3,9 @@ import { Player } from "./player"
 
 export function MainLayout({ children, showHeader = true }) {
   return (
-    <div className="flex h-screen bg-black text-white">
+    <div className="flex h-screen bg-background text-foreground">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto bg-gradient-to-b from-zinc-900 to-black pb-24">{children}</main>
+      <main className="flex-1 overflow-y-auto bg-gradient-to-b from-secondary/20 to-background pb-24">{children}</main>
       <Player />
     </div>
   )

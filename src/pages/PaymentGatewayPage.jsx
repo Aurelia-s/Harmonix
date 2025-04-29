@@ -178,12 +178,12 @@ export default function PaymentGatewayPage() {
 
   return (
     <MainLayout>
-      <div className="max-w-4xl mx-auto p-6">
+      <div className="max-w-4xl mx-auto p-6 bg-background min-h-screen">
         <div className="flex items-center gap-4 mb-8">
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full bg-black/40 hover:bg-black/60"
+            className="rounded-full bg-secondary/20 hover:bg-secondary/30"
             onClick={() => navigate(`/premium-plans`)}
           >
             <ChevronLeft className="h-5 w-5" />
@@ -194,7 +194,7 @@ export default function PaymentGatewayPage() {
         <motion.div variants={container} initial="hidden" animate="show" className="grid md:grid-cols-3 gap-8">
           <motion.div variants={item} className="md:col-span-2 space-y-8">
             <form onSubmit={handleSubmit}>
-              <section className="bg-zinc-900/60 rounded-lg p-6 mb-6">
+              <section className="bg-card rounded-lg p-6 mb-6 shadow-sm border border-border">
                 <h2 className="text-xl font-bold mb-4">Payment Method</h2>
                 <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod} className="space-y-4">
                   <div className="flex items-center space-x-2">
@@ -227,7 +227,7 @@ export default function PaymentGatewayPage() {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-zinc-900/60 rounded-lg p-6 mb-6"
+                  className="bg-card rounded-lg p-6 mb-6 shadow-sm border border-border"
                 >
                   <h2 className="text-xl font-bold mb-4">Card Details</h2>
                   <div className="space-y-4">
@@ -238,12 +238,14 @@ export default function PaymentGatewayPage() {
                       <Input
                         id="card-number"
                         placeholder="1234 5678 9012 3456"
-                        className="bg-zinc-800 border-zinc-700"
+                        className="bg-background border-input"
                         value={cardNumber}
                         onChange={handleCardNumberChange}
                         maxLength={19}
                       />
-                      {formErrors.cardNumber && <p className="text-red-500 text-sm mt-1">{formErrors.cardNumber}</p>}
+                      {formErrors.cardNumber && (
+                        <p className="text-destructive text-sm mt-1">{formErrors.cardNumber}</p>
+                      )}
                     </div>
 
                     <div>
@@ -253,11 +255,11 @@ export default function PaymentGatewayPage() {
                       <Input
                         id="card-name"
                         placeholder="John Smith"
-                        className="bg-zinc-800 border-zinc-700"
+                        className="bg-background border-input"
                         value={cardName}
                         onChange={(e) => setCardName(e.target.value)}
                       />
-                      {formErrors.cardName && <p className="text-red-500 text-sm mt-1">{formErrors.cardName}</p>}
+                      {formErrors.cardName && <p className="text-destructive text-sm mt-1">{formErrors.cardName}</p>}
                     </div>
 
                     <div className="grid grid-cols-3 gap-4">
@@ -266,7 +268,7 @@ export default function PaymentGatewayPage() {
                           Month
                         </Label>
                         <Select value={expMonth} onValueChange={setExpMonth}>
-                          <SelectTrigger id="exp-month" className="bg-zinc-800 border-zinc-700">
+                          <SelectTrigger id="exp-month" className="bg-background border-input">
                             <SelectValue placeholder="MM" />
                           </SelectTrigger>
                           <SelectContent>
@@ -277,14 +279,14 @@ export default function PaymentGatewayPage() {
                             ))}
                           </SelectContent>
                         </Select>
-                        {formErrors.expMonth && <p className="text-red-500 text-sm mt-1">{formErrors.expMonth}</p>}
+                        {formErrors.expMonth && <p className="text-destructive text-sm mt-1">{formErrors.expMonth}</p>}
                       </div>
                       <div className="col-span-1">
                         <Label htmlFor="exp-year" className="mb-1 block">
                           Year
                         </Label>
                         <Select value={expYear} onValueChange={setExpYear}>
-                          <SelectTrigger id="exp-year" className="bg-zinc-800 border-zinc-700">
+                          <SelectTrigger id="exp-year" className="bg-background border-input">
                             <SelectValue placeholder="YY" />
                           </SelectTrigger>
                           <SelectContent>
@@ -295,7 +297,7 @@ export default function PaymentGatewayPage() {
                             ))}
                           </SelectContent>
                         </Select>
-                        {formErrors.expYear && <p className="text-red-500 text-sm mt-1">{formErrors.expYear}</p>}
+                        {formErrors.expYear && <p className="text-destructive text-sm mt-1">{formErrors.expYear}</p>}
                       </div>
                       <div className="col-span-1">
                         <Label htmlFor="cvc" className="mb-1 block">
@@ -304,18 +306,18 @@ export default function PaymentGatewayPage() {
                         <Input
                           id="cvc"
                           placeholder="123"
-                          className="bg-zinc-800 border-zinc-700"
+                          className="bg-background border-input"
                           value={cvc}
                           onChange={(e) => setCvc(e.target.value.replace(/\D/g, ""))}
                           maxLength={4}
                         />
-                        {formErrors.cvc && <p className="text-red-500 text-sm mt-1">{formErrors.cvc}</p>}
+                        {formErrors.cvc && <p className="text-destructive text-sm mt-1">{formErrors.cvc}</p>}
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-2 pt-2">
                       <Checkbox id="save-card" checked={saveCard} onCheckedChange={setSaveCard} />
-                      <Label htmlFor="save-card" className="text-sm text-zinc-300 cursor-pointer">
+                      <Label htmlFor="save-card" className="text-sm text-muted-foreground cursor-pointer">
                         Save this card for future payments
                       </Label>
                     </div>
@@ -329,11 +331,11 @@ export default function PaymentGatewayPage() {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-zinc-900/60 rounded-lg p-6 mb-6 text-center"
+                  className="bg-card rounded-lg p-6 mb-6 shadow-sm border border-border text-center"
                 >
                   <PaypalIcon className="h-12 w-12 text-[#00457C] mx-auto mb-4" />
                   <p className="mb-4">You will be redirected to PayPal to complete your purchase.</p>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     Please note: You don't need a PayPal account to pay with your credit card through PayPal.
                   </p>
                 </motion.section>
@@ -345,17 +347,17 @@ export default function PaymentGatewayPage() {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-zinc-900/60 rounded-lg p-6 mb-6 text-center"
+                  className="bg-card rounded-lg p-6 mb-6 shadow-sm border border-border text-center"
                 >
                   <Apple className="h-12 w-12 mx-auto mb-4" />
                   <p className="mb-4">You will be prompted to complete your purchase with Apple Pay.</p>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     Make sure you're using a compatible device with Apple Pay set up.
                   </p>
                 </motion.section>
               )}
 
-              <section className="bg-zinc-900/60 rounded-lg p-6 mb-6">
+              <section className="bg-card rounded-lg p-6 mb-6 shadow-sm border border-border">
                 <h2 className="text-xl font-bold mb-4">Billing Address</h2>
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -363,13 +365,13 @@ export default function PaymentGatewayPage() {
                       <Label htmlFor="first-name" className="mb-1 block">
                         First Name
                       </Label>
-                      <Input id="first-name" placeholder="John" className="bg-zinc-800 border-zinc-700" />
+                      <Input id="first-name" placeholder="John" className="bg-background border-input" />
                     </div>
                     <div>
                       <Label htmlFor="last-name" className="mb-1 block">
                         Last Name
                       </Label>
-                      <Input id="last-name" placeholder="Smith" className="bg-zinc-800 border-zinc-700" />
+                      <Input id="last-name" placeholder="Smith" className="bg-background border-input" />
                     </div>
                   </div>
 
@@ -377,7 +379,7 @@ export default function PaymentGatewayPage() {
                     <Label htmlFor="address" className="mb-1 block">
                       Address
                     </Label>
-                    <Input id="address" placeholder="123 Main St" className="bg-zinc-800 border-zinc-700" />
+                    <Input id="address" placeholder="123 Main St" className="bg-background border-input" />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -385,13 +387,13 @@ export default function PaymentGatewayPage() {
                       <Label htmlFor="city" className="mb-1 block">
                         City
                       </Label>
-                      <Input id="city" placeholder="New York" className="bg-zinc-800 border-zinc-700" />
+                      <Input id="city" placeholder="New York" className="bg-background border-input" />
                     </div>
                     <div>
                       <Label htmlFor="zip" className="mb-1 block">
                         ZIP Code
                       </Label>
-                      <Input id="zip" placeholder="10001" className="bg-zinc-800 border-zinc-700" />
+                      <Input id="zip" placeholder="10001" className="bg-background border-input" />
                     </div>
                   </div>
 
@@ -400,7 +402,7 @@ export default function PaymentGatewayPage() {
                       Country
                     </Label>
                     <Select defaultValue="us">
-                      <SelectTrigger id="country" className="bg-zinc-800 border-zinc-700">
+                      <SelectTrigger id="country" className="bg-background border-input">
                         <SelectValue placeholder="Select country" />
                       </SelectTrigger>
                       <SelectContent>
@@ -416,30 +418,30 @@ export default function PaymentGatewayPage() {
                 </div>
               </section>
 
-              <section className="bg-zinc-900/60 rounded-lg p-6 mb-6">
+              <section className="bg-card rounded-lg p-6 mb-6 shadow-sm border border-border">
                 <div className="flex items-center space-x-2 mb-6">
                   <Checkbox id="agree-terms" checked={agreeTerms} onCheckedChange={setAgreeTerms} />
-                  <Label htmlFor="agree-terms" className="text-sm text-zinc-300 cursor-pointer">
+                  <Label htmlFor="agree-terms" className="text-sm text-muted-foreground cursor-pointer">
                     I agree to the{" "}
-                    <a href="#" className="text-green-500 hover:underline">
+                    <a href="#" className="text-primary hover:underline">
                       Terms of Service
                     </a>{" "}
                     and{" "}
-                    <a href="#" className="text-green-500 hover:underline">
+                    <a href="#" className="text-primary hover:underline">
                       Privacy Policy
                     </a>
                   </Label>
                 </div>
-                {formErrors.agreeTerms && <p className="text-red-500 text-sm">{formErrors.agreeTerms}</p>}
+                {formErrors.agreeTerms && <p className="text-destructive text-sm">{formErrors.agreeTerms}</p>}
 
                 <Button
                   type="submit"
-                  className="w-full bg-green-500 hover:bg-green-600 text-black font-bold h-12"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-12"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
                     <div className="flex items-center justify-center">
-                      <div className="h-5 w-5 border-2 border-black border-t-transparent rounded-full animate-spin mr-2"></div>
+                      <div className="h-5 w-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2"></div>
                       Processing...
                     </div>
                   ) : (
@@ -447,7 +449,7 @@ export default function PaymentGatewayPage() {
                   )}
                 </Button>
 
-                <div className="flex items-center justify-center gap-1 mt-4 text-xs text-zinc-400">
+                <div className="flex items-center justify-center gap-1 mt-4 text-xs text-muted-foreground">
                   <Lock className="h-3 w-3" />
                   <span>Secure payment processed by Stripe</span>
                 </div>
@@ -456,7 +458,7 @@ export default function PaymentGatewayPage() {
           </motion.div>
 
           <motion.div variants={item} className="md:col-span-1">
-            <div className="bg-zinc-900/60 rounded-lg p-6 sticky top-6">
+            <div className="bg-card rounded-lg p-6 sticky top-6 shadow-sm border border-border">
               <h2 className="text-xl font-bold mb-4">Order Summary</h2>
 
               <div className="space-y-4">
@@ -465,21 +467,21 @@ export default function PaymentGatewayPage() {
                   <p className="text-lg font-bold">{selectedPlan.price}</p>
                 </div>
 
-                <Separator className="bg-zinc-800" />
+                <Separator className="bg-border" />
 
                 <div className="space-y-2">
                   <h3 className="font-medium">What's included:</h3>
                   <ul className="space-y-2">
                     {selectedPlan.features.map((feature, index) => (
                       <motion.li key={index} className="flex items-start gap-2" whileHover={{ x: 5 }}>
-                        <CheckCircle2 className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
 
-                <Separator className="bg-zinc-800" />
+                <Separator className="bg-border" />
 
                 <div className="space-y-2">
                   <div className="flex justify-between">
@@ -492,14 +494,14 @@ export default function PaymentGatewayPage() {
                   </div>
                 </div>
 
-                <Separator className="bg-zinc-800" />
+                <Separator className="bg-border" />
 
                 <div className="flex justify-between font-bold">
                   <span>Total</span>
                   <span>{selectedPlan.price.split("/")[0]}</span>
                 </div>
 
-                <div className="pt-4 text-sm text-zinc-400">
+                <div className="pt-4 text-sm text-muted-foreground">
                   <p>
                     {selectedPlan.cycle === "monthly"
                       ? "You'll be charged monthly until you cancel."
@@ -507,7 +509,7 @@ export default function PaymentGatewayPage() {
                   </p>
                   <p className="mt-2">
                     Cancel anytime.{" "}
-                    <a href="#" className="text-green-500 hover:underline">
+                    <a href="#" className="text-primary hover:underline">
                       Terms apply
                     </a>
                   </p>
